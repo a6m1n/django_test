@@ -1,0 +1,25 @@
+{% extends 'manages/base.html' %}
+{% block title %} Detail product  {% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; padding: 3rem;">Detail order</h1>
+
+<div class="container">
+     <div class="row justify-content-md-center">
+        <div class="card" style="width: 38rem; text-align: center;">
+          <div class="card-header">
+            Status sale: {% if order.product.sale %}in Sale{% else %}Not for sale{% endif %}
+          </div>
+          <ul class="list-group list-group-flush" >
+            <li class="list-group-item">Name product: {{order.product.name}}</li>
+              <li class="list-group-item">Status order: {{order.get_status_display}}</li>
+              <li class="list-group-item" >Full price: {{order.product.price}}$</li>
+              <li class="list-group-item" >Client phone: {{order.client_phone_number}}</li>
+              <li class="list-group-item" ><a href="{% url 'order_update' order.pk %}" class="btn btn-outline-warning btn-block">Change?</a></li>
+              <li class="list-group-item" ><a href="{% url 'gen_check' order.pk %}" class="btn btn-outline-success btn-block">Check it!</a></li>
+          </ul>
+        </div>
+     </div>
+</div>
+
+{% endblock %}

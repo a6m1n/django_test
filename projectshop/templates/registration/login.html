@@ -1,0 +1,28 @@
+{% extends 'manages/base.html' %}
+{% block title %}  Login {% endblock %}
+
+{% block content %}
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  <div class="container" style="padding-top: 7rem ">
+      <div class="card">
+          <div class="card-body">
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+
+              {% for f in form %}
+                <div class="form-group">
+                  {{ f.label }}
+                  {{ f }}
+                </div>
+              {% endfor %}
+
+              <input type="submit" value="login" />
+              <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+          </div>
+      </div>
+  </div>
+{% endblock %}
