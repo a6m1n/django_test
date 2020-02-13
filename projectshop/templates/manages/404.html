@@ -1,0 +1,14 @@
+{% extends 'manages/base.html' %}
+{% block title %} Create Order  {% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron">
+      <h1 class="display-4">Hello, user!</h1>
+      <p class="lead">Are you sure you paid for this product?</p>
+      <hr class="my-4">
+      <p>Contact the cashier if you have questions.</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'products'%}" role="button">Go to products</a>
+    </div>
+
+{% endblock %}

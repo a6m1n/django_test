@@ -2,27 +2,37 @@
 {% block title %} Create Order  {% endblock %}
 
 {% block content %}
-<h1 style="text-align: center; padding: 3rem;">Check page</h1>
+            <div class="jumbotron" style="text-align: center;">
+              {% if order.get_status_display == 'Payed'%}
+              <h1 class="display-4">This product has status PAYED</h1>
+              <p class="lead">Are you sure you change for this product?</p>
+              {% else %}
+              <h1 class="display-4">Check order page</h1>
+              {% endif %}
+              <hr class="my-4">
+                <div class="container">
+                 <div class="row justify-content-md-center">
+                    <div class="card" style="width: 38rem; text-align: center;">
+                      <div class="card-header">
+                        Status sale: {% if order.product.sale %}in Sale{% else %}Not for sale{% endif %}
+                      </div>
+                      <ul class="list-group list-group-flush" >
+                        <li class="list-group-item">Name product: {{order.product.name}}</li>
+                          <li class="list-group-item">Status order: {{order.get_status_display}}</li>
+                          <li class="list-group-item" >Full price: {{order.product.price}}$</li>
+                          <li class="list-group-item" >Client phone: {{order.client_phone_number}}</li>
+                          <li class="list-group-item" ><a href="{% url 'order_update' order.pk %}" class="btn btn-outline-warning btn-block">Change?</a></li>
+                          {% if order.get_status_display == 'Done'%}
+                          <form action="" method="post">
+                              {%csrf_token%}
+                              <li class="list-group-item" ><button type="submit" class="btn btn-outline-success btn-block">Yes, buy!</button></li>
+                          </form>
+                          {% endif %}
 
-{% if order.get_status_display == 'Done'%}
-    <div class="container">
-         <div class="row justify-content-md-center">
-            <div class="card" style="width: 38rem; text-align: center;">
-              <div class="card-header">
-                Status sale: {% if order.product.sale %}in Sale{% else %}Not for sale{% endif %}
-              </div>
-              <ul class="list-group list-group-flush" >
-                <li class="list-group-item">Name product: {{order.product.name}}</li>
-                  <li class="list-group-item">Status order: {{order.get_status_display}}</li>
-                  <li class="list-group-item" >Full price: {{order.product.price}}$</li>
-                  <li class="list-group-item" >Client phone: {{order.client_phone_number}}</li>
-                  <li class="list-group-item" ><a href="{% url 'order_update' order.pk %}" class="btn btn-outline-warning btn-block">Change?</a></li>
-                  <form action="" method="post">{%csrf_token%}<li class="list-group-item" ><button type="submit" class="btn btn-outline-success btn-block">Yes, buy!</button></li></form>
-              </ul>
+                      </ul>
+                    </div>
+                 </div>
             </div>
-         </div>
     </div>
-{% endif %}
-
 
 {% endblock %}

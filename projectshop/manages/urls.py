@@ -17,7 +17,7 @@ urlpatterns = [
     # example url: http://domain.com/orders/1            # 1 - id product
     path('orders/<int:pk>', views.OrderDetailView.as_view(), name='order_detail'),
 
-    # example url: http://domain.com/products/create
+    # example url: http://domain.com/orders/create
     path('orders/create', views.CreateProductView.as_view(), name='create_product'),
 
     # example url: http://domain.com/products/create
@@ -26,11 +26,13 @@ urlpatterns = [
     # example url: http://domain.com/orders/1/change
     path('orders/<int:pk>/change', views.OrderUpdate.as_view(), name='order_update'),
 
-    # example url: http://domain.com/orders/1/check            # 1 - id product
+    # example url: http://domain.com/orders/1/check                     # 1 - id product
     path('orders/<int:pk>/check', views.GenerateCheckView.as_view(), name='gen_check'),
 
-    # example url: http://domain.com/orders/1/check/complete            # 1 - id product
-    path('orders/<int:pk>/check/complete', views.test.as_view(), name='check_complete'),
+    # example url: http://domain.com/orders/1/check/complete            # 1 - id order
+    path('orders/<int:pk>/check/complete', views.SuccessOrderView.as_view(), name='check_complete'),
 
+    # example url: http://domain.com/products/1/order                  # 1 - id product
+    path('products/<int:pk>/order', views.GetOrderView.as_view(), name='redirect_to_order')
 
 ]

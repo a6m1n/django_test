@@ -2,41 +2,44 @@
 {% block title %} Shop  {% endblock %}
 
 {% block content %}
-<h1>Products</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name product</th>
+        <th scope="col">Date</th>
+          <th scope="col">Sale!!</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+          <th scope="col">Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <th scope="row">{{ product.id }}</th>
+          <td>{{ product.name }}</td>
+          <td>{{ product.create_date }}</td>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Name product</th>
-      <th scope="col">Date</th>
-        <th scope="col">Sale!!</th>
-        <th scope="col">Price</th>
-        <th scope="col">Link</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for product in products %}
-    <tr>
-      <th scope="row">{{ product.id }}</th>
-        <td>{{ product.name }}</td>
-        <td>{{ product.create_date }}</td>
-        {% if product.sale.all %}
-        <td>{{ product.get_all_discount }} %</td>
-        <td> {{ product.price }}$ <s style="padding-left: 20px">{{ product.start_price }}$</s></td>
-        {% else %}
-        <td>Best price!</td>
-        <td>{{ product.start_price }}$</td>
-        {% endif %}
-      <td><a href="{{product.id}}">Click here</a></td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+          {% if product.sale.all %}
+            <td>{{ product.get_all_discount }} %</td>
+            <td> {{ product.price }}$ <s style="padding-left: 20px">{{ product.start_price }}$</s></td>
+          {% else %}
+            <td>Best price!</td>
+            <td>{{ product.start_price }}$</td>
+          {% endif %}
 
+          {% if product.order %}
+            <td>{{product.order.get_status_display}}</td>
+          {% else %}
+            <td>Not order</td>
+          {% endif %}
 
-
-
+        <td><a href="{{product.id}}">Click here</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 
 {% if is_paginated %}
     {% include "manages/_pagination.html" %}

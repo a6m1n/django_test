@@ -1,0 +1,50 @@
+<div class="container">
+
+
+
+  <p style="padding: 1rem;">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Add settings filter
+  </button>
+</p>
+<div class="collapse" id="collapseExample" style="padding: 1rem;">
+  <div class="card card-body">
+    <form action="" method="get" id="my-form">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Statuses: </label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="status">
+          <option selected>Choose...</option>
+          {% for s in status %}
+          <option value="{{s.1}}">{{s.1}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Date start:</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="date_start">
+        <div class="input-group-append">
+          <span class="input-group-text">Example 01.01.2000</span>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Date end:</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="date_end">
+        <div class="input-group-append">
+          <span class="input-group-text">Example 12.12.2012</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-primary">Send</button>
+    </form>
+
+  </div>
+</div>
+
+</div>

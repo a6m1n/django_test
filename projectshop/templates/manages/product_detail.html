@@ -2,6 +2,10 @@
 {% block title %} Detail product  {% endblock %}
 
 {% block content %}
+
+
+
+
   <div class="card text-center">
     {% if product.sale %}
     <div class="card-header">
@@ -20,6 +24,7 @@
       <p class="card-text">Current price for this product: {{ product.start_price }}$ </p>
       {% endif %}
       <a href="{% url 'products'%}" class="btn btn-primary">Go to list products</a>
+      {% if product.order %}<a href="{% url 'redirect_to_order' product.pk%}" class="btn btn-primary">Buy this product</a>{% endif %}
     </div>
     <div class="card-footer text-muted">
       {{product.create_date}}

@@ -10,7 +10,7 @@ class Product(models.Model):
 
     def get_all_discount(self):
         summ = sum(self.sale.all().values_list('discount', flat=True))
-        return summ if summ<100 else 99
+        return summ if summ<=100 else 99
 
     @property
     def price(self):
@@ -19,7 +19,7 @@ class Product(models.Model):
         return self.start_price
 
     def __str__(self):
-        return f'{self.name} {self.price} {self.price} ({self.pk})'
+        return f'{self.name} {self.price} ({self.pk})'
 
 
 class Order(models.Model):
@@ -31,6 +31,8 @@ class Order(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,)
     client_phone_number = models.CharField(max_length=30)
     status = models.CharField(max_length=1, choices=STATUSES, default='N',)
+    date_create_order = models.DateTimeField(auto_now_add=True)
+    date_close_order = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.product.name} {self.get_status_display()} ({self.pk})'
