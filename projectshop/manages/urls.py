@@ -1,6 +1,7 @@
 from django.urls import path
 from manages import views
 
+
 urlpatterns = [
     # example url: http://domain.com/
     path('', views.IndexView.as_view(), name='index'),
@@ -18,10 +19,10 @@ urlpatterns = [
     path('orders/<int:pk>', views.OrderDetailView.as_view(), name='order_detail'),
 
     # example url: http://domain.com/orders/create
-    path('orders/create', views.CreateProductView.as_view(), name='create_product'),
+    path('products/create', views.CreateProductView.as_view(), name='create_product'),
 
     # example url: http://domain.com/products/create
-    path('products/create', views.CreateOrderView.as_view(), name='create_order'),
+    path('orders/create', views.CreateOrderView.as_view(), name='create_order'),
 
     # example url: http://domain.com/orders/1/change
     path('orders/<int:pk>/change', views.OrderUpdate.as_view(), name='order_update'),

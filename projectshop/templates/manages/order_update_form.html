@@ -2,31 +2,32 @@
 {% block title %} Update Order  {% endblock %}
 
 {% block content %}
-<div class="container" style="padding-top: 7rem ">
-    <div class="card text-center">
-        <div class="card-body">
-            <form action="" method="POST">
-                {% csrf_token %}
-                {% if form.errors %}
-                    {% for field, errors in form.errors.items %}
-                        {% for error in errors %}
-                            <div class="alert alert-danger" role="alert">
-                              {{error}}
-                            </div>
+{% if perms.manages.change_order %}
+    <div class="container" style="padding-top: 7rem ">
+        <div class="card text-center">
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  {{error}}
+                                </div>
+                            {% endfor %}
                         {% endfor %}
+                    {% endif %}
+                    {% for f in form %}
+                        <div class="form-group">
+                            {{ f.label }}:
+                            <br>
+                            {{ f }}
+                        </div>
                     {% endfor %}
-                {% endif %}
-                {% for f in form %}
-                    <div class="form-group">
-                        {{ f.label }}:
-                        <br>
-                        {{ f }}
-                    </div>
-                {% endfor %}
-                <input type="submit">
-            </form>
+                    <input type="submit">
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
+{% endif %}
 {% endblock %}

@@ -1,26 +1,29 @@
 {% extends 'manages/base.html' %}
-{% block title %} Create Order  {% endblock %}
+{% block title %} Check page  {% endblock %}
 
 {% block content %}
+{% if perms.manages.change_order %}
             <div class="jumbotron" style="text-align: center;">
-              {% if order.get_status_display == 'Payed'%}
-              <h1 class="display-4">This product has status PAYED</h1>
-              <p class="lead">Are you sure you change for this product?</p>
-              {% else %}
-              <h1 class="display-4">Check order page</h1>
-              {% endif %}
+              {% if order.get_status_display == 'Done'%}
+                <h1 class="display-4">Check order page</h1>
+                {% else %}
+                <h1 class="display-4">This product need change. Not status done!</h1>
+                <p class="lead">Are you sure you change for this product?</p>
+                {% endif %}
               <hr class="my-4">
                 <div class="container">
                  <div class="row justify-content-md-center">
                     <div class="card" style="width: 38rem; text-align: center;">
                       <div class="card-header">
-                        Status sale: {% if order.product.sale %}in Sale{% else %}Not for sale{% endif %}
+                        Status sale: {% if order.product.get_all_discount %}in Sale{% else %}Not for sale{% endif %}
                       </div>
                       <ul class="list-group list-group-flush" >
                         <li class="list-group-item">Name product: {{order.product.name}}</li>
                           <li class="list-group-item">Status order: {{order.get_status_display}}</li>
                           <li class="list-group-item" >Full price: {{order.product.price}}$</li>
                           <li class="list-group-item" >Client phone: {{order.client_phone_number}}</li>
+                          <li class="list-group-item" >Date create order: {{order.date_create_order}}</li>
+                          {% if order.date_close_order %}<li class="list-group-item" >Date close order: {{order.date_close_order}}</li>{% endif %}
                           <li class="list-group-item" ><a href="{% url 'order_update' order.pk %}" class="btn btn-outline-warning btn-block">Change?</a></li>
                           {% if order.get_status_display == 'Done'%}
                           <form action="" method="post">
@@ -34,5 +37,7 @@
                  </div>
             </div>
     </div>
-
+{% else %}
+<h1>Dont have perms</h1>
+{% endif %}
 {% endblock %}

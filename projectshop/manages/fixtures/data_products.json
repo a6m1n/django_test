@@ -1,0 +1,893 @@
+[
+    {
+        "model": "manages.product",
+        "pk": 1,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 957,
+            "create_date": "2010-09-13"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 2,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 2664,
+            "create_date": "2013-08-05"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 3,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 691,
+            "create_date": "2014-01-04"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 4,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 2413,
+            "create_date": "2019-04-17"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 5,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 1768,
+            "create_date": "2010-12-22"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 6,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 2080,
+            "create_date": "2007-01-19"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 7,
+        "fields": {
+            "name": "Apple",
+            "start_price": 256,
+            "create_date": "2014-12-23"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 8,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1641,
+            "create_date": "2009-11-05"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 9,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 2690,
+            "create_date": "2011-09-14"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 10,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 42,
+            "create_date": "2005-04-02"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 11,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2601,
+            "create_date": "2008-03-31"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 12,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 68,
+            "create_date": "2011-09-16"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 13,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1058,
+            "create_date": "2009-10-04"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 14,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 1225,
+            "create_date": "2011-04-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 15,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 704,
+            "create_date": "2016-07-27"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 16,
+        "fields": {
+            "name": "Apple",
+            "start_price": 1493,
+            "create_date": "2004-10-16"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 17,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 1799,
+            "create_date": "2013-06-27"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 18,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1513,
+            "create_date": "2003-12-23"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 19,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 2078,
+            "create_date": "2008-04-12"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 20,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 2529,
+            "create_date": "2015-11-04"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 21,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 865,
+            "create_date": "2004-01-13"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 22,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 41,
+            "create_date": "2010-12-14"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 23,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1157,
+            "create_date": "2013-05-08"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 24,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 2892,
+            "create_date": "2007-03-22"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 25,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2150,
+            "create_date": "2010-09-14"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 26,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 2805,
+            "create_date": "2001-06-29"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 27,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2347,
+            "create_date": "2019-01-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 28,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1963,
+            "create_date": "2003-08-03"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 29,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2608,
+            "create_date": "2018-01-02"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 30,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 543,
+            "create_date": "2017-11-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 31,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1087,
+            "create_date": "2002-02-01"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 32,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2959,
+            "create_date": "2005-12-09"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 33,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 1347,
+            "create_date": "2015-02-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 34,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 2285,
+            "create_date": "2002-03-18"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 35,
+        "fields": {
+            "name": "Apple",
+            "start_price": 301,
+            "create_date": "2019-03-29"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 36,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 705,
+            "create_date": "2014-05-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 37,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2419,
+            "create_date": "2015-06-20"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 38,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 2279,
+            "create_date": "2018-10-13"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 39,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 681,
+            "create_date": "2001-03-10"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 40,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 2240,
+            "create_date": "2019-12-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 41,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 1379,
+            "create_date": "2012-01-16"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 42,
+        "fields": {
+            "name": "Apple",
+            "start_price": 1989,
+            "create_date": "2005-05-16"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 43,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2395,
+            "create_date": "2012-02-10"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 44,
+        "fields": {
+            "name": "Apple",
+            "start_price": 1811,
+            "create_date": "2005-11-09"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 45,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 333,
+            "create_date": "2017-10-30"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 46,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 2086,
+            "create_date": "2019-05-04"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 47,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2988,
+            "create_date": "2004-04-08"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 48,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 823,
+            "create_date": "2014-03-07"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 49,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 325,
+            "create_date": "2013-05-24"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 50,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1909,
+            "create_date": "2015-05-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 51,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 1322,
+            "create_date": "2002-08-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 52,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 2402,
+            "create_date": "2005-09-04"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 53,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 2045,
+            "create_date": "2015-07-25"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 54,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 1575,
+            "create_date": "2000-07-20"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 55,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2704,
+            "create_date": "2003-08-30"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 56,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 2546,
+            "create_date": "2006-09-26"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 57,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 18,
+            "create_date": "2016-07-08"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 58,
+        "fields": {
+            "name": "Apple",
+            "start_price": 1161,
+            "create_date": "2011-05-08"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 59,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1598,
+            "create_date": "2011-07-13"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 60,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1256,
+            "create_date": "2009-02-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 61,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2106,
+            "create_date": "2018-12-24"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 62,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 327,
+            "create_date": "2015-01-12"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 63,
+        "fields": {
+            "name": "Apple",
+            "start_price": 207,
+            "create_date": "2018-05-01"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 64,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 1494,
+            "create_date": "2006-10-27"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 65,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1648,
+            "create_date": "2017-09-07"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 66,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 2452,
+            "create_date": "2002-09-20"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 67,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 1587,
+            "create_date": "2010-05-28"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 68,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 188,
+            "create_date": "2014-09-08"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 69,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2427,
+            "create_date": "2002-11-20"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 70,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 2129,
+            "create_date": "2006-02-06"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 71,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 923,
+            "create_date": "2011-07-13"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 72,
+        "fields": {
+            "name": "Apple",
+            "start_price": 2432,
+            "create_date": "2014-11-20"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 73,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 680,
+            "create_date": "2004-02-19"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 74,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 1120,
+            "create_date": "2011-07-18"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 75,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 389,
+            "create_date": "2011-07-18"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 76,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1549,
+            "create_date": "2015-04-12"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 77,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1319,
+            "create_date": "2009-06-17"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 78,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 2291,
+            "create_date": "2009-08-19"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 79,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 654,
+            "create_date": "2019-07-15"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 80,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 827,
+            "create_date": "2017-07-31"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 81,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 2435,
+            "create_date": "2017-06-01"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 82,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 1362,
+            "create_date": "2006-07-25"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 83,
+        "fields": {
+            "name": "Lenovo a5Apple airPods",
+            "start_price": 389,
+            "create_date": "2014-01-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 84,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 2911,
+            "create_date": "2013-01-21"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 85,
+        "fields": {
+            "name": "Redmi X23Genius mouse",
+            "start_price": 417,
+            "create_date": "2009-02-26"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 86,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 1788,
+            "create_date": "2010-06-12"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 87,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 2814,
+            "create_date": "2002-07-10"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 88,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1939,
+            "create_date": "2014-04-03"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 89,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1768,
+            "create_date": "2015-06-25"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 90,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 1057,
+            "create_date": "2015-06-22"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 91,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 2928,
+            "create_date": "2016-12-10"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 92,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 609,
+            "create_date": "2019-11-24"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 93,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 365,
+            "create_date": "2004-06-24"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 94,
+        "fields": {
+            "name": "Nike airMax",
+            "start_price": 1282,
+            "create_date": "2019-11-29"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 95,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 2196,
+            "create_date": "2005-10-11"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 96,
+        "fields": {
+            "name": "Adidas NMD",
+            "start_price": 2146,
+            "create_date": "2013-04-03"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 97,
+        "fields": {
+            "name": "Samsung s10",
+            "start_price": 2741,
+            "create_date": "2010-08-23"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 98,
+        "fields": {
+            "name": "4Tech",
+            "start_price": 1228,
+            "create_date": "2012-01-17"
+        }
+    },
+    {
+        "model": "manages.product",
+        "pk": 99,
+        "fields": {
+            "name": "iPhone 3",
+            "start_price": 185,
+            "create_date": "2010-11-08"
+        }
+    }
+]

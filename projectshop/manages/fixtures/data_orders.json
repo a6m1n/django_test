@@ -1,0 +1,492 @@
+[
+    {
+        "model": "manages.order",
+        "pk": 1,
+        "fields": {
+            "product": 27,
+            "client_phone_number": "+539847561",
+            "status": "N",
+            "date_create_order": "2003-07-29"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 2,
+        "fields": {
+            "product": 41,
+            "client_phone_number": "+918626254",
+            "status": "P",
+            "date_create_order": "2015-03-31"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 3,
+        "fields": {
+            "product": 97,
+            "client_phone_number": "+171964612",
+            "status": "P",
+            "date_create_order": "2012-10-08"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 4,
+        "fields": {
+            "product": 25,
+            "client_phone_number": "+755412585",
+            "status": "D",
+            "date_create_order": "2017-04-22"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 5,
+        "fields": {
+            "product": 35,
+            "client_phone_number": "+876557994",
+            "status": "D",
+            "date_create_order": "2002-12-31"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 6,
+        "fields": {
+            "product": 81,
+            "client_phone_number": "+482779842",
+            "status": "N",
+            "date_create_order": "2011-07-11"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 7,
+        "fields": {
+            "product": 79,
+            "client_phone_number": "+728278532",
+            "status": "N",
+            "date_create_order": "2015-12-02"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 8,
+        "fields": {
+            "product": 76,
+            "client_phone_number": "+467858343",
+            "status": "D",
+            "date_create_order": "2008-07-15"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 9,
+        "fields": {
+            "product": 90,
+            "client_phone_number": "+699631542",
+            "status": "P",
+            "date_create_order": "2014-12-07"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 10,
+        "fields": {
+            "product": 88,
+            "client_phone_number": "+312673863",
+            "status": "N",
+            "date_create_order": "2000-04-02"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 11,
+        "fields": {
+            "product": 64,
+            "client_phone_number": "+449636518",
+            "status": "N",
+            "date_create_order": "2004-08-28"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 12,
+        "fields": {
+            "product": 8,
+            "client_phone_number": "+441126743",
+            "status": "N",
+            "date_create_order": "2013-03-25"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 13,
+        "fields": {
+            "product": 45,
+            "client_phone_number": "+782379228",
+            "status": "N",
+            "date_create_order": "2005-04-25"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 14,
+        "fields": {
+            "product": 13,
+            "client_phone_number": "+163627781",
+            "status": "D",
+            "date_create_order": "2003-04-06"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 15,
+        "fields": {
+            "product": 30,
+            "client_phone_number": "+373977428",
+            "status": "P",
+            "date_create_order": "2006-07-01"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 16,
+        "fields": {
+            "product": 53,
+            "client_phone_number": "+536951239",
+            "status": "P",
+            "date_create_order": "2004-10-21"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 17,
+        "fields": {
+            "product": 44,
+            "client_phone_number": "+162283417",
+            "status": "P",
+            "date_create_order": "2019-01-29"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 18,
+        "fields": {
+            "product": 59,
+            "client_phone_number": "+629526666",
+            "status": "N",
+            "date_create_order": "2012-07-15"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 19,
+        "fields": {
+            "product": 77,
+            "client_phone_number": "+659496589",
+            "status": "N",
+            "date_create_order": "2006-08-22"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 20,
+        "fields": {
+            "product": 43,
+            "client_phone_number": "+313478519",
+            "status": "P",
+            "date_create_order": "2010-01-24"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 21,
+        "fields": {
+            "product": 54,
+            "client_phone_number": "+511792246",
+            "status": "N",
+            "date_create_order": "2006-09-20"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 22,
+        "fields": {
+            "product": 36,
+            "client_phone_number": "+379233516",
+            "status": "D",
+            "date_create_order": "2000-12-27"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 23,
+        "fields": {
+            "product": 87,
+            "client_phone_number": "+482325225",
+            "status": "P",
+            "date_create_order": "2018-10-23"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 24,
+        "fields": {
+            "product": 68,
+            "client_phone_number": "+368348815",
+            "status": "P",
+            "date_create_order": "2006-10-22"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 25,
+        "fields": {
+            "product": 1,
+            "client_phone_number": "+672119861",
+            "status": "P",
+            "date_create_order": "2015-05-10"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 26,
+        "fields": {
+            "product": 63,
+            "client_phone_number": "+211629318",
+            "status": "N",
+            "date_create_order": "2004-07-10"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 27,
+        "fields": {
+            "product": 56,
+            "client_phone_number": "+898488552",
+            "status": "P",
+            "date_create_order": "2005-03-09"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 28,
+        "fields": {
+            "product": 67,
+            "client_phone_number": "+479249114",
+            "status": "N",
+            "date_create_order": "2017-12-28"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 29,
+        "fields": {
+            "product": 48,
+            "client_phone_number": "+583331521",
+            "status": "P",
+            "date_create_order": "2018-12-16"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 30,
+        "fields": {
+            "product": 26,
+            "client_phone_number": "+579919549",
+            "status": "N",
+            "date_create_order": "2019-11-14"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 31,
+        "fields": {
+            "product": 16,
+            "client_phone_number": "+736761652",
+            "status": "P",
+            "date_create_order": "2001-04-13"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 32,
+        "fields": {
+            "product": 18,
+            "client_phone_number": "+559945658",
+            "status": "P",
+            "date_create_order": "2019-01-17"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 33,
+        "fields": {
+            "product": 50,
+            "client_phone_number": "+784354878",
+            "status": "N",
+            "date_create_order": "2013-02-18"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 34,
+        "fields": {
+            "product": 20,
+            "client_phone_number": "+288798739",
+            "status": "N",
+            "date_create_order": "2015-07-03"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 35,
+        "fields": {
+            "product": 69,
+            "client_phone_number": "+966826814",
+            "status": "P",
+            "date_create_order": "2001-02-03"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 36,
+        "fields": {
+            "product": 28,
+            "client_phone_number": "+297496712",
+            "status": "D",
+            "date_create_order": "2000-06-17"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 37,
+        "fields": {
+            "product": 89,
+            "client_phone_number": "+894438268",
+            "status": "P",
+            "date_create_order": "2003-05-16"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 38,
+        "fields": {
+            "product": 92,
+            "client_phone_number": "+238568778",
+            "status": "P",
+            "date_create_order": "2005-11-15"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 39,
+        "fields": {
+            "product": 22,
+            "client_phone_number": "+111546768",
+            "status": "P",
+            "date_create_order": "2016-03-02"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 40,
+        "fields": {
+            "product": 60,
+            "client_phone_number": "+289624533",
+            "status": "D",
+            "date_create_order": "2007-06-26"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 41,
+        "fields": {
+            "product": 52,
+            "client_phone_number": "+846999269",
+            "status": "N",
+            "date_create_order": "2002-04-13"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 42,
+        "fields": {
+            "product": 91,
+            "client_phone_number": "+486872423",
+            "status": "N",
+            "date_create_order": "2005-11-01"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 43,
+        "fields": {
+            "product": 38,
+            "client_phone_number": "+826843379",
+            "status": "N",
+            "date_create_order": "2016-10-14"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 44,
+        "fields": {
+            "product": 78,
+            "client_phone_number": "+414266471",
+            "status": "N",
+            "date_create_order": "2012-05-08"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 45,
+        "fields": {
+            "product": 11,
+            "client_phone_number": "+355164548",
+            "status": "D",
+            "date_create_order": "2017-09-01"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 46,
+        "fields": {
+            "product": 33,
+            "client_phone_number": "+211389175",
+            "status": "P",
+            "date_create_order": "2018-06-02"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 47,
+        "fields": {
+            "product": 5,
+            "client_phone_number": "+155774151",
+            "status": "D",
+            "date_create_order": "2005-11-09"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 48,
+        "fields": {
+            "product": 40,
+            "client_phone_number": "+346343232",
+            "status": "D",
+            "date_create_order": "2014-08-13"
+        }
+    },
+    {
+        "model": "manages.order",
+        "pk": 49,
+        "fields": {
+            "product": 29,
+            "client_phone_number": "+322488896",
+            "status": "P",
+            "date_create_order": "2013-08-27"
+        }
+    }
+]

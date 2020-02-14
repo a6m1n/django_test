@@ -4,7 +4,7 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    start_price = models.DecimalField(max_digits=5, decimal_places=2)
+    start_price = models.DecimalField(max_digits=7, decimal_places=2)
     sale = models.ManyToManyField('Sale', blank=True)
     create_date = models.DateField()
 
@@ -31,8 +31,8 @@ class Order(models.Model):
     product = models.OneToOneField(Product, on_delete=models.CASCADE,)
     client_phone_number = models.CharField(max_length=30)
     status = models.CharField(max_length=1, choices=STATUSES, default='N',)
-    date_create_order = models.DateTimeField(auto_now_add=True)
-    date_close_order = models.DateTimeField(blank=True, null=True)
+    date_create_order = models.DateField()
+    date_close_order = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f'{self.product.name} {self.get_status_display()} ({self.pk})'

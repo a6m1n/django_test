@@ -1,14 +1,17 @@
-from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView, RedirectView
+from django.views.generic import TemplateView, ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView, UpdateView
 from django.shortcuts import redirect, get_object_or_404
+from django.db.models import Q
+from django.contrib.auth.decorators import permission_required
 
 from .models import Product, Order
 from .forms import ProductForm, OrderForm
 
+from datetime import datetime
 
 class IndexView(TemplateView):
     """
@@ -72,11 +75,24 @@ class OrdersListView(ListView):
     paginate_by = 10
 
     def get_queryset(self, *args, **kwargs):
-        q = super().get_queryset()
         status = self.request.GET.get('status')
-        print(status)
-        # print(q.filter(status=))
-        return q
+        date_create_order = self.request.GET.get('date_start')
+        date_close_order = self.request.GET.get('date_end')
+        q = Q()
+
+        if status:
+            q &= Q(status=status[0])
+
+        if date_close_order:
+            date_object_close = datetime.strptime(date_close_order, '%d-%m-%Y').date()
+            q &= Q(date_close_order__gte=date_object_close)
+
+        if date_create_order:
+            date_object_create = datetime.strptime(date_create_order, '%d-%m-%Y').date()
+            q &= Q(date_create_order__gte=date_object_create)
+            # q &= Q(date_create_order__year__gte=2000)
+
+        return super().get_queryset().filter(q)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -121,7 +137,7 @@ class OrderDetailView(DetailView):
 class OrderUpdate(UpdateView):
     model = Order
     template_name_suffix = '_update_form'
-    fields = ['product', 'client_phone_number', 'status']
+    fields = ['product', 'client_phone_number', 'status', 'date_create_order']
 
     def get_success_url(self):
         order_id = self.kwargs['pk']
@@ -137,11 +153,7 @@ class GenerateCheckView(DetailView):
 
     def post(self, request, pk ,*args, **kwargs):
         if request.POST:
-            obj = self.model.objects.filter(id=pk).first()
-            obj.status = 'P'
-            obj.save()
             return redirect(reverse_lazy('check_complete', kwargs={'pk': pk}))
-        return self.get(request, pk, *args, **kwargs)
 
 
 class SuccessOrderView(DetailView):
@@ -151,6 +163,15 @@ class SuccessOrderView(DetailView):
     model = Order
     context_object_name = 'order'
     template_name = "manages/success_order.html"
+
+    def get(self, request, *args, **kwargs):
+        r = super().get(request, *args, **kwargs)
+        if self.object.status == 'D':
+            self.object.status = 'P'
+            self.object.date_close_order = datetime.now().date()
+            self.object.save()
+            return r
+        return HttpResponse('Error')
 
 
 class GetOrderView(View):

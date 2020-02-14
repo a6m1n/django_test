@@ -4,67 +4,42 @@
 {% block content %}
 
 {% include "manages/_nav_filter.html" %}
-
-
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Status</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Client phone</th>
-      <th scope="col">Order status</th>
-      <th scope="col">Date create</th>
-      <th scope="col">Date close</th>
-      <th scope="col">Link</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for order in orders %}
-            <tr>
-              <th scope="row">{{order.id}}</th>
-              <td>{{ order.get_status_display }}</td>
-              <td>{{ order.product.name }}</td>
-              <td>{{ order.product.price }}$</td>
-              <td>{{ order.client_phone_number }}</td>
-              <td>{{ order.get_status_display }}</td>
-              <td>{{ order.date_create_order }}</td>
-              <td>{{ order.date_close_order }}</td>
-              <td><a href="{{ order.id }}">Click here </a></td>
-            </tr>
-    {% endfor %}
+{% if perms.manages.view_order %}
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Status</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Client phone</th>
+        <th scope="col">Order status</th>
+        <th scope="col">Date create</th>
+        <th scope="col">Date close</th>
+        <th scope="col">Link</th>
+      </tr>
+    </thead>
     <tbody>
-</table>
+      {% for order in orders %}
+              <tr>
+                <th scope="row">{{order.id}}</th>
+                <td>{{ order.get_status_display }}</td>
+                <td>{{ order.product.name }}</td>
+                <td>{{ order.product.price }}$</td>
+                <td>{{ order.client_phone_number }}</td>
+                <td>{{ order.get_status_display }}</td>
+                <td>{{ order.date_create_order }}</td>
+                <td>{{ order.date_close_order }}</td>
+                <td><a href="{{ order.id }}">Click here </a></td>
+              </tr>
+      {% endfor %}
+      <tbody>
+  </table>
 
-{% if is_paginated %}
-    {% include "manages/_pagination.html" %}
+  {% if is_paginated %}
+      {% include "manages/_pagination.html" %}
+  {% endif %}
+
+  {% include "manages/_js_script_filter.html" %}
 {% endif %}
-
-<script>
-
-  let url = new URL(document.URL);
-  let myForm = document.getElementById("my-form").elements;
-  let postData={};
-
-  //delete last params
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  let keys = urlParams.keys();
-  for (let key of keys) url.searchParams.delete(key);
-
-
-  //Get params and run to new url
-  document.getElementById("my-form").addEventListener("submit", function(event){
-    event.preventDefault();
-    for (var i=0; i<myForm.length; i++) {
-      if (myForm[i].name && myForm[i].value && myForm[i].value!='Choose...')
-        url.searchParams.set(myForm[i].name, myForm[i].value);
-        postData[myForm[i].name] = myForm[i].value;
-    }
-    window.location = url;
-  });
-
-
-</script>
 {% endblock %}
