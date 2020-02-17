@@ -4,6 +4,8 @@
 
 ###### python3 manage.py runserver
 
+###### celery -A projectshop worker -B
+
 <hr>
 
 
@@ -18,4 +20,3 @@ Cashier          123
 
 admin           123
 ~~~~
-{{ perms.manages }}

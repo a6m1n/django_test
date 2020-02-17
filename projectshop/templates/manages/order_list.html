@@ -4,42 +4,46 @@
 {% block content %}
 
 {% include "manages/_nav_filter.html" %}
-{% if perms.manages.view_order %}
-  <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Status</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Client phone</th>
-        <th scope="col">Order status</th>
-        <th scope="col">Date create</th>
-        <th scope="col">Date close</th>
-        <th scope="col">Link</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for order in orders %}
-              <tr>
-                <th scope="row">{{order.id}}</th>
-                <td>{{ order.get_status_display }}</td>
-                <td>{{ order.product.name }}</td>
-                <td>{{ order.product.price }}$</td>
-                <td>{{ order.client_phone_number }}</td>
-                <td>{{ order.get_status_display }}</td>
-                <td>{{ order.date_create_order }}</td>
-                <td>{{ order.date_close_order }}</td>
-                <td><a href="{{ order.id }}">Click here </a></td>
-              </tr>
-      {% endfor %}
+  {% if perms.manages.view_order %}
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status sale</th>
+          <th scope="col">Client phone</th>
+          <th scope="col">Order status</th>
+          <th scope="col">Date create</th>
+          <th scope="col">Date close</th>
+          <th scope="col">Link</th>
+        </tr>
+      </thead>
       <tbody>
-  </table>
+        {% for order in orders %}
+                <tr>
+                  <th scope="row">{{order.id}}</th>
+                  <td>{{ order.product.name }}</td>
+                  <td>{{ order.product.price }}$</td>
+                  {% if order.product.sale %}
+                  <td>{{ order.product.sale.discount }} %</td>
+                  {% else %}
+                  <td>Not sale</td>
+                  {% endif %}
+                  <td>{{ order.client_phone_number }}</td>
+                  <td>{{ order.get_status_display }}</td>
+                  <td>{{ order.date_create_order }}</td>
+                  <td>{{ order.date_close_order }}</td>
+                  <td><a href="{{ order.id }}">Click here </a></td>
+                </tr>
+        {% endfor %}
+        <tbody>
+    </table>
 
-  {% if is_paginated %}
-      {% include "manages/_pagination.html" %}
+    {% if is_paginated %}
+        {% include "manages/_pagination.html" %}
+    {% endif %}
+
+    {% include "manages/_js_script_filter.html" %}
   {% endif %}
-
-  {% include "manages/_js_script_filter.html" %}
-{% endif %}
 {% endblock %}

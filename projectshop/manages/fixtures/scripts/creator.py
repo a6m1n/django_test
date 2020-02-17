@@ -34,9 +34,9 @@ class CreateFixtureProduct:
     def create_big_data(self):
         self.data = []
 
-        self.names = ['Apple', 'iPhone 3', 'iPhone 3', 'Samsung s10', 'Lenovo a5'
-                      'Apple airPods', 'Nike airMax', 'Adidas NMD', 'Redmi X23'
-                      'Genius mouse', '4Tech'
+        self.names = ['Apple', 'iPhone 3', 'iPhone 3', 'Samsung s10', 'Lenovo a5',
+                      'Apple airPods', 'Nike airMax', 'Adidas NMD', 'Redmi X23',
+                      'Genius mouse', '4Tech',
                       ]
 
     def random_datetime(self):

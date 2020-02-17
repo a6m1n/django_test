@@ -1,6 +1,6 @@
 <hr>
 
-****create&run fixtures products
+# create&run fixtures products
 
 ###### python3 create_products.py
 

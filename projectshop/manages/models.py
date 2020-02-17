@@ -1,21 +1,26 @@
-from django.core.validators import MaxValueValidator
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
+
+from datetime import datetime, timezone
+
+from sales.models import (
+    AllTimeDiscount, PromoCodeDiscount, StorageDiscount, TemporaryDiscount
+)
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
     start_price = models.DecimalField(max_digits=7, decimal_places=2)
-    sale = models.ManyToManyField('Sale', blank=True)
+    sale = models.ForeignKey(
+        'Sale', blank=True, null=True, on_delete=models.CASCADE
+    )
     create_date = models.DateField()
-
-    def get_all_discount(self):
-        summ = sum(self.sale.all().values_list('discount', flat=True))
-        return summ if summ<=100 else 99
 
     @property
     def price(self):
-        if self.sale.all():
-            return round(self.start_price - (self.start_price*self.get_all_discount()/100), 2)
+        if self.sale:
+            return round(self.start_price -
+                         (self.start_price*self.sale.discount/100), 2)
         return self.start_price
 
     def __str__(self):
@@ -40,9 +45,28 @@ class Order(models.Model):
 
 class Sale(models.Model):
     name = models.CharField(max_length=255)
-    discount = models.PositiveIntegerField(unique=True, validators=[MaxValueValidator(100)])
-    date_start = models.DateTimeField()
-    date_end = models.DateTimeField()
+    date_create = models.DateTimeField(blank=True, null=True)
+
+    storage_dsc = GenericRelation(StorageDiscount)
+    all_time_dsc = GenericRelation(AllTimeDiscount)
+    temporary_dsc = GenericRelation(TemporaryDiscount)
+    promo_code_dsc = GenericRelation(PromoCodeDiscount)
+
+    @property
+    def discount(self):
+        return self.get_all_discount()
+
+    def get_all_discount(self):
+        total_sum_discount = 0
+        lists_var = [
+            "storage_dsc", "all_time_dsc", "temporary_dsc", "promo_code_dsc"
+        ]
+
+        for attr in lists_var:
+            total_sum_discount += sum(
+                getattr(self, attr).all().values_list('discount', flat=True))
+
+        return total_sum_discount if total_sum_discount <= 100 else 99
 
     def __str__(self):
-        return f'{self.discount} ({self.pk})'
+        return f'Name discount: "{self.name}". Percent discount: {self.discount}%. (ID:{self.pk})'

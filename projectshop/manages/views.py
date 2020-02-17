@@ -2,16 +2,16 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.detail import DetailView
 from django.shortcuts import redirect, get_object_or_404
 from django.db.models import Q
-from django.contrib.auth.decorators import permission_required
-
-from .models import Product, Order
-from .forms import ProductForm, OrderForm
 
 from datetime import datetime
+
+from manages.models import Product, Order
+from manages.forms import ProductForm, OrderForm
+
 
 class IndexView(TemplateView):
     """

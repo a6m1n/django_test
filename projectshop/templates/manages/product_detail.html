@@ -3,7 +3,7 @@
 
 {% block content %}
   <div class="card text-center">
-    {% if product.sale.all %}
+    {% if product.sale %}
     <div class="card-header">
       Sale!!
     </div>
@@ -14,8 +14,8 @@
     {% endif %}
     <div class="card-body">
       <h5 class="card-title">Product: {{product.name}}</h5>
-      {% if product.sale.all %}
-      <p class="card-text">Sale in this product: {{ product.get_all_discount }} % !! New price: {{ product.price }}$ <br> Last price: {{ product.start_price }}$ </p>
+      {% if product.sale %}
+      <p class="card-text">Sale in this product: {{ product.sale.discount }} % !! New price: {{ product.price }}$ <br> Last price: {{ product.start_price }}$ </p>
       {% else %}
       <p class="card-text">Current price for this product: {{ product.start_price }}$ </p>
       {% endif %}

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from celery.schedules import crontab
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'manages.apps.ManagesConfig',
+    'sales.apps.SalesConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+
+# CELERY
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Kiev'
+CELERY_BEAT_SCHEDULE = {
+        'product_to_sale': {
+           'task': 'manages.tasks.product_all',
+           'schedule': crontab(minute=0, hour=0)	,  # каждые 30 секунд
+        },
+}

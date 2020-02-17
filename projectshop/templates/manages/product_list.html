@@ -22,8 +22,8 @@
           <td>{{ product.name }}</td>
           <td>{{ product.create_date }}</td>
 
-          {% if product.sale.all %}
-            <td>{{ product.get_all_discount }} %</td>
+          {% if product.sale %}
+            <td>{{ product.sale.discount }} %</td>
             <td> {{ product.price }}$ <s style="padding-left: 20px">{{ product.start_price }}$</s></td>
           {% else %}
             <td>Best price!</td>

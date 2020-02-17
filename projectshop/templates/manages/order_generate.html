@@ -15,12 +15,16 @@
                  <div class="row justify-content-md-center">
                     <div class="card" style="width: 38rem; text-align: center;">
                       <div class="card-header">
-                        Status sale: {% if order.product.get_all_discount %}in Sale{% else %}Not for sale{% endif %}
+                        Status sale: {% if order.product.sale %}in Sale{% else %}Not for sale{% endif %}
                       </div>
                       <ul class="list-group list-group-flush" >
                         <li class="list-group-item">Name product: {{order.product.name}}</li>
                           <li class="list-group-item">Status order: {{order.get_status_display}}</li>
-                          <li class="list-group-item" >Full price: {{order.product.price}}$</li>
+                          {% if order.product.sale %}
+                          <li class="list-group-item">Last price: ${{ order.product.start_price }} </li>
+                          <li class="list-group-item">Percent sale: {{ order.product.sale.get_all_discount }} % </li>
+                          {%endif%}
+                          <li class="list-group-item" >Current price: {{order.product.price}}$</li>
                           <li class="list-group-item" >Client phone: {{order.client_phone_number}}</li>
                           <li class="list-group-item" >Date create order: {{order.date_create_order}}</li>
                           {% if order.date_close_order %}<li class="list-group-item" >Date close order: {{order.date_close_order}}</li>{% endif %}
