@@ -8,51 +8,102 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='AllTimeDiscount',
+            name="AllTimeDiscount",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('discount', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(100)])),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "discount",
+                    models.PositiveIntegerField(
+                        validators=[django.core.validators.MaxValueValidator(
+                            100
+                        )]
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False, },
         ),
         migrations.CreateModel(
-            name='PromoCodeDiscount',
+            name="PromoCodeDiscount",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('discount', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(100)])),
-                ('code', models.CharField(max_length=30)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "discount",
+                    models.PositiveIntegerField(
+                        validators=[django.core.validators.MaxValueValidator(
+                            100
+                        )]
+                    ),
+                ),
+                ("code", models.CharField(max_length=30)),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False, },
         ),
         migrations.CreateModel(
-            name='StorageDiscount',
+            name="StorageDiscount",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('discount', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(100)])),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "discount",
+                    models.PositiveIntegerField(
+                        validators=[django.core.validators.MaxValueValidator(
+                            100
+                        )]
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False, },
         ),
         migrations.CreateModel(
-            name='TemporaryDiscount',
+            name="TemporaryDiscount",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('discount', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(100)])),
-                ('date_start_discount', models.DateField()),
-                ('date_close_discount', models.DateField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "discount",
+                    models.PositiveIntegerField(
+                        validators=[django.core.validators.MaxValueValidator(
+                            100
+                        )]
+                    ),
+                ),
+                ("date_start_discount", models.DateField()),
+                ("date_close_discount", models.DateField()),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False, },
         ),
     ]

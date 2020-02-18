@@ -1,5 +1,7 @@
+""" Define django app """
 from django.apps import AppConfig
 
 
 class SalesConfig(AppConfig):
-    name = 'sales'
+    """Define django appConfig"""
+    name = "sales"

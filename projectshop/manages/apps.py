@@ -1,5 +1,7 @@
+"""App config django"""
 from django.apps import AppConfig
 
 
 class ManagesConfig(AppConfig):
-    name = 'manages'
+    """default django app config"""
+    name = "manages"

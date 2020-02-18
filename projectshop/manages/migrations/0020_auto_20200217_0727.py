@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0019_auto_20200214_0906'),
+        ("manages", "0019_auto_20200214_0906"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='sale',
-            name='discount',
+            model_name="sale",
+            name="discount",
             field=models.PositiveIntegerField(
                 validators=[django.core.validators.MaxValueValidator(100)]
             ),

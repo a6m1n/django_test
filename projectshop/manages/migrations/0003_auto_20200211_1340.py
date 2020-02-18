@@ -7,26 +7,42 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0002_auto_20200211_1151'),
+        ("manages", "0002_auto_20200211_1151"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Sale',
+            name="Sale",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('discount', models.PositiveIntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("discount", models.PositiveIntegerField()),
             ],
         ),
         migrations.AddField(
-            model_name='order',
-            name='status',
-            field=models.CharField(choices=[('N', 'New'), ('D', 'Done'), ('P', 'payed')], default='N', max_length=1),
+            model_name="order",
+            name="status",
+            field=models.CharField(
+                choices=[("N", "New"), ("D", "Done"), ("P", "payed")],
+                default="N",
+                max_length=1,
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='sale',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='manages.Sale'),
+            model_name="product",
+            name="sale",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="manages.Sale",
+            ),
             preserve_default=False,
         ),
     ]

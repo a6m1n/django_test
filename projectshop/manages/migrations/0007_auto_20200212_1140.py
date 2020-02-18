@@ -6,18 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0006_remove_product_status_sale'),
+        ("manages", "0006_remove_product_status_sale"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='product',
-            old_name='price',
-            new_name='start_price',
+            model_name="product", old_name="price", new_name="start_price",
         ),
         migrations.AlterField(
-            model_name='order',
-            name='status',
-            field=models.CharField(choices=[('N', 'New'), ('D', 'Done'), ('P', 'Payed')], default='N', max_length=1),
+            model_name="order",
+            name="status",
+            field=models.CharField(
+                choices=[("N", "New"), ("D", "Done"), ("P", "Payed")],
+                default="N",
+                max_length=1,
+            ),
         ),
     ]

@@ -6,32 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sales', '0001_initial'),
+        ("sales", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='alltimediscount',
-            name='name',
-            field=models.CharField(default='new', max_length=255),
+            model_name="alltimediscount",
+            name="name",
+            field=models.CharField(default="new", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='promocodediscount',
-            name='name',
-            field=models.CharField(default='new', max_length=255),
+            model_name="promocodediscount",
+            name="name",
+            field=models.CharField(default="new", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='storagediscount',
-            name='name',
-            field=models.CharField(default='new', max_length=255),
+            model_name="storagediscount",
+            name="name",
+            field=models.CharField(default="new", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='temporarydiscount',
-            name='name',
-            field=models.CharField(default='new', max_length=255),
+            model_name="temporarydiscount",
+            name="name",
+            field=models.CharField(default="new", max_length=255),
             preserve_default=False,
         ),
     ]

@@ -8,26 +8,47 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('statussale', models.BooleanField()),
-                ('name', models.CharField(max_length=255)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=5)),
-                ('create_date', models.DateField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("statussale", models.BooleanField()),
+                ("name", models.CharField(max_length=255)),
+                ("price", models.DecimalField(decimal_places=2, max_digits=5)),
+                ("create_date", models.DateField()),
             ],
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('client_phone_number', models.CharField(max_length=30)),
-                ('product', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='manages.Product')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("client_phone_number", models.CharField(max_length=30)),
+                (
+                    "product",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="manages.Product",
+                    ),
+                ),
             ],
         ),
     ]

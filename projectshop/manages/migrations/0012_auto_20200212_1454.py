@@ -6,20 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0011_sale_name'),
+        ("manages", "0011_sale_name"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='sale',
-            name='date_end',
-            field=models.DateTimeField(default='2020-01-01'),
+            model_name="sale",
+            name="date_end",
+            field=models.DateTimeField(default="2020-01-01"),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='sale',
-            name='date_start',
-            field=models.DateTimeField(default='2020-01-01'),
+            model_name="sale",
+            name="date_start",
+            field=models.DateTimeField(default="2020-01-01"),
             preserve_default=False,
         ),
     ]

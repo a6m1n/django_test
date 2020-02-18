@@ -1,34 +1,42 @@
-from math import sqrt
-from projectshop.celery import app
-
+"""Celery tasks file"""
 import datetime
 
+from django.contrib.contenttypes.models import ContentType
+from projectshop.celery import app
 from manages.models import Product, Sale
-
-
-@app.task(name="manages.tasks.square_root")
-def square_root(value):
-    print('YES SQUARE_ROOT')
-    return sqrt(value)
+from sales.models import AllTimeDiscount
 
 
 @app.task(name="manages.tasks.product_all")
 def product_all():
-    status = ''       # if need delete all sales change this value to 'clear'
+    """
+    Adds sale with percent 20 to all product, that were created before 30 days
 
-    objs = Product.objects.all()
-    sale_obj, created = Sale.objects.get_or_create(
-        name='Classic time-product sale', discount=20
+    If status = "clear" celery task will remove all sale in products
+
+    """
+    status = "clear"  # if need delete all sales change this value to 'clear'
+
+    product_objs = Product.objects.all()
+    time_sale, created = AllTimeDiscount.objects.get_or_create(
+        name="Classic time-product sale", discount=20
     )
 
-    for obj in objs:
-        value = datetime.datetime.now(datetime.timezone.utc).date() - obj.create_date
-        if datetime.timedelta(30)<=value and not obj.sale.all() and status!='clear' :
-            obj.sale.add(sale_obj)
-            obj.save()
-        elif status == 'clear':
-            obj.sale.clear()
-            obj.save()
+    for prod_obj in product_objs:
+        current_date = datetime.datetime.now(datetime.timezone.utc).date()
 
-    print('Complete run')
+        value = current_date - prod_obj.create_date
+        is_over_days = datetime.timedelta(30) <= value
+        if is_over_days and not prod_obj.sales.all() and status != "clear":
+            Sale.objects.create(
+                name="Classic all-time sale",
+                product=prod_obj,
+                content_type=ContentType.objects.get_for_model(
+                    AllTimeDiscount),
+                object_id=time_sale.pk
+            )
+        elif status == "clear":
+            prod_obj.sales.all().delete()
+            prod_obj.save()
 
+    print("Complete run")

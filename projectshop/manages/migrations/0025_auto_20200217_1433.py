@@ -6,16 +6,10 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0024_remove_sale_discount'),
+        ("manages", "0024_remove_sale_discount"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='sale',
-            name='content_type',
-        ),
-        migrations.RemoveField(
-            model_name='sale',
-            name='object_id',
-        ),
+        migrations.RemoveField(model_name="sale", name="content_type",),
+        migrations.RemoveField(model_name="sale", name="object_id",),
     ]

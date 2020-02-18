@@ -7,56 +7,72 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contenttypes', '0002_remove_content_type_name'),
-        ('sales', '0002_auto_20200217_1357'),
+        ("contenttypes", "0002_remove_content_type_name"),
+        ("sales", "0002_auto_20200217_1357"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='alltimediscount',
-            name='content_type',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType'),
+            model_name="alltimediscount",
+            name="content_type",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="contenttypes.ContentType",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='alltimediscount',
-            name='object_id',
+            model_name="alltimediscount",
+            name="object_id",
             field=models.PositiveIntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='promocodediscount',
-            name='content_type',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType'),
+            model_name="promocodediscount",
+            name="content_type",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="contenttypes.ContentType",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='promocodediscount',
-            name='object_id',
+            model_name="promocodediscount",
+            name="object_id",
             field=models.PositiveIntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='storagediscount',
-            name='content_type',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType'),
+            model_name="storagediscount",
+            name="content_type",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="contenttypes.ContentType",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='storagediscount',
-            name='object_id',
+            model_name="storagediscount",
+            name="object_id",
             field=models.PositiveIntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='temporarydiscount',
-            name='content_type',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType'),
+            model_name="temporarydiscount",
+            name="content_type",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="contenttypes.ContentType",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='temporarydiscount',
-            name='object_id',
+            model_name="temporarydiscount",
+            name="object_id",
             field=models.PositiveIntegerField(default=1),
             preserve_default=False,
         ),

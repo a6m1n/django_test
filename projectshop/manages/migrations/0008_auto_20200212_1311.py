@@ -7,22 +7,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('manages', '0007_auto_20200212_1140'),
+        ("manages", "0007_auto_20200212_1140"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='product',
-            name='sale',
-        ),
+        migrations.RemoveField(model_name="product", name="sale",),
         migrations.AddField(
-            model_name='product',
-            name='sale',
-            field=models.ManyToManyField(blank=True, null=True, to='manages.Sale'),
+            model_name="product",
+            name="sale",
+            field=models.ManyToManyField(
+                blank=True,
+                null=True,
+                to="manages.Sale"
+            ),
         ),
         migrations.AlterField(
-            model_name='sale',
-            name='discount',
-            field=models.PositiveIntegerField(unique=True, validators=[django.core.validators.MaxValueValidator(100)]),
+            model_name="sale",
+            name="discount",
+            field=models.PositiveIntegerField(
+                unique=True,
+                validators=[django.core.validators.MaxValueValidator(100)]
+            ),
         ),
     ]
