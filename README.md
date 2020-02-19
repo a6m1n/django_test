@@ -1,22 +1,65 @@
-###### python3 manage.py migrate
+
+# RUN PROJECT
+~~~~
+python3 manage.py migrate
+
+python3 manage.py runserver
+~~~~
 
 **Run fixtures (check tutorial projectshop/manages/fixtures)**
-
-###### python3 manage.py runserver
-
-###### celery -A projectshop worker -B
-
 <hr>
 
+~~~~
+         USERS
+_________________________
+login       |   password    
+_________________________
+Assistant    |     123
+_________________________
+Accountant   |    123
+_________________________
+Cashier      |    123
+_________________________
+admin        |     123
+_________________________
+~~~~
+
+# TESTING
+~~~~
+python3 manage.py test manages
+
+coverage run --source='.' manage.py test
+
+coverage run --source='.' --omit='*migrations*' manage.py test 
+
+coverage report 
+~~~~
+
+# PYLINT
+
+~~~~
+pylint --load-plugins pylint_django "PATH TO RUN"
+~~~~
 
 
-~~~~login            password    
+# CELERY RUN
+~~~~
+celery -A projectshop worker -B
 
-Assistant         123
+celery -A projectshop  worker --loglevel=INFO
+~~~~
 
-Accountant       123
 
-Cashier          123
+#How to run tutorial
+~~~~
+- git clone {rep}
+- cd django_test
+- python3 pip3 install -r requirements.txt
+- cd projectshop
 
-admin           123
+1) Python manage.py migrate
+2) python manage.py makefixtures    #or checkfile to manages/fixtures/readme.md
+3) python manage.py loaddata "name fixtures'
+4) celery -A projectshop worker -B     #new window to terminal (OPTIONAL FIELD)
+5) python manage.py runserver 
 ~~~~

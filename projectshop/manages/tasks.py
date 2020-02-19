@@ -8,14 +8,14 @@ from sales.models import AllTimeDiscount
 
 
 @app.task(name="manages.tasks.product_all")
-def product_all():
-    """
-    Adds sale with percent 20 to all product, that were created before 30 days
+def product_all(status=None):
+    """Adds sale with percent 20 to all product, that were created before
+     30 days. If status = "clear" celery task will remove all sale in products
 
-    If status = "clear" celery task will remove all sale in products
-
+    # if need delete all sales change this value to 'clear'
+    status = None
+    status = 'clear' - delete all sale
     """
-    status = "clear"  # if need delete all sales change this value to 'clear'
 
     product_objs = Product.objects.all()
     time_sale, created = AllTimeDiscount.objects.get_or_create(
@@ -39,4 +39,4 @@ def product_all():
             prod_obj.sales.all().delete()
             prod_obj.save()
 
-    print("Complete run")
+    print("Complete run! #file celery tasks")

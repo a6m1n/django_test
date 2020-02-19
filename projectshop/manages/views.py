@@ -159,11 +159,10 @@ class GenerateCheckView(DetailView):
     context_object_name = "order"
     template_name = "manages/order_generate.html"
 
-    def post(self, request, pimarykey, *args, **kwargs):
+    def post(self, request, pk_obj, *args, **kwargs):
         """Classic post request"""
-        super().get(request, *args, **kwargs)
         return redirect(reverse_lazy(
-            "check_complete", kwargs={"pk": pimarykey})
+            "check_complete", kwargs={"pk": pk_obj})
         )
 
 

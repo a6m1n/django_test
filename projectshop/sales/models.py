@@ -1,4 +1,4 @@
-"""Models sales (custom name this app: saleiki :D)"""
+"""Models sales """
 from django.db import models
 from django.core.validators import MaxValueValidator
 from django.contrib.contenttypes.fields import GenericRelation

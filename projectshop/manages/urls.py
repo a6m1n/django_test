@@ -36,7 +36,7 @@ urlpatterns = [
          name='order_update'),
 
     # example url: http://domain.com/orders/1/check            # 1 - id product
-    path('orders/<int:pk>/check', views.GenerateCheckView.as_view(),
+    path('orders/<int:pk_obj>/check', views.GenerateCheckView.as_view(),
          name='gen_check'),
 
     # example url: http://domain.com/orders/1/check/complete     # 1 - id order
