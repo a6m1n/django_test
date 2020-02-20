@@ -8,14 +8,26 @@ Need add to fixtures 4 users.
 2) boogalter
 3) cashier
 4) shop assistant
+
+import scripts.creator as mod - if you wont run from terminal and you in this
+directories are located. Check the directory in the terminal command:
+
+$ ls
+
 """
-import scripts.creator as mod
+import manages.fixtures.scripts.creator as mod
+
+
+def main():
+    """Func start creation fixture product & order"""
+    obj = mod.CreateFixtureProduct()
+    obj.create_data()
+    print("Product - ", obj.write_to_file("data_products.json"))
+
+    obj = mod.CreateFixtureOrder()
+    obj.create_data()
+    print("Order - ", obj.write_to_file("data_orders.json"))
+
 
 if __name__ == "__main__":
-    OBJ = mod.CreateFixtureProduct()
-    OBJ.create_data()
-    print("Product - ", OBJ.write_to_file())
-
-    OBJ = mod.CreateFixtureOrder()
-    OBJ.create_data()
-    print("Order - ", OBJ.write_to_file())
+    main()

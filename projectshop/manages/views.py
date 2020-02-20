@@ -57,17 +57,6 @@ class CreateProductView(FormView):
     form_class = ProductForm
     success_url = "/products/"
 
-    def post(self, request, *args, **kwargs):
-        """
-        Handle POST requests: instantiate a form instance with the passed
-        POST variables and then check if it's valid.
-        """
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            return self.form_valid(form)
-        return self.form_invalid(form)
-
 
 class OrdersListView(ListView):
     """ List view who have custom filter """
@@ -86,16 +75,21 @@ class OrdersListView(ListView):
             object_q &= Q(status=status[0])
 
         if date_close_order:
-            date_object_close = datetime.strptime(
-                date_close_order, "%d-%m-%Y"
-            ).date()
-
+            try:
+                date_object_close = datetime.strptime(
+                    date_close_order, "%d-%m-%Y"
+                ).date()
+            except ValueError:
+                return super().get_queryset(*args, **kwargs)
             object_q &= Q(date_close_order__gte=date_object_close)
 
         if date_create_order:
-            date_object_create = datetime.strptime(
-                date_create_order, "%d-%m-%Y"
-            ).date()
+            try:
+                date_object_create = datetime.strptime(
+                    date_create_order, "%d-%m-%Y"
+                ).date()
+            except ValueError:
+                return super().get_queryset(*args, **kwargs)
 
             object_q &= Q(date_create_order__gte=date_object_create)
             # q &= Q(date_create_order__year__gte=2000)
@@ -117,17 +111,6 @@ class CreateOrderView(FormView):
     template_name = "manages/order_create.html"
     form_class = OrderForm
     success_url = "/orders/"
-
-    def post(self, request, *args, **kwargs):
-        """
-        Handle POST requests: instantiate a form instance with the passed
-        POST variables and then check if it's valid.
-        """
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            return self.form_valid(form)
-        return self.form_invalid(form)
 
 
 class OrderDetailView(DetailView):
@@ -159,11 +142,10 @@ class GenerateCheckView(DetailView):
     context_object_name = "order"
     template_name = "manages/order_generate.html"
 
-    def post(self, request, pk_obj, *args, **kwargs):
+    def post(self, request, pk):
         """Classic post request"""
         return redirect(reverse_lazy(
-            "check_complete", kwargs={"pk": pk_obj})
-        )
+            "check_complete", kwargs={"pk": pk}))
 
 
 class SuccessOrderView(DetailView):

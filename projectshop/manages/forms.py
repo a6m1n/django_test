@@ -1,58 +1,59 @@
 """Django forms file"""
-from django import forms
+import datetime
+
+from django.forms import ModelForm
 from .models import Product, Order
 
 
-class OrderForm(forms.Form):
-    """From for create order"""
-    product = forms.ModelChoiceField(
-        queryset=Product.objects.filter(order=None),
-    )
-    client_phone_number = forms.CharField(max_length=30)
-    status = forms.ChoiceField(choices=Order.STATUSES, required=True)
-    date_create_order = forms.DateField(
-        input_formats=["%d.%m.%Y"], required=False,
-    )
-
+class FormControlMixin:
+    """From control mixin who add class form-control to all fields"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        lists_fields = [
-            'product', 'client_phone_number', 'status', 'date_create_order'
-        ]
+        for field in self.fields.values():
+            field.widget.attrs.update({"class": "form-control"})
 
-        for attr in lists_fields:
-            self.fields[attr].widget.attrs.update({"class": "form-control"})
+
+class OrderForm(FormControlMixin, ModelForm):
+    """Class order form. Validation phone and date this!"""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.fields['date_create_order'].widget.attrs.update(
-            {"placeholder": "format: dd.mm.YYYY."}
+            {"placeholder": "format: YYYY-mm-dd ."}
+        )
+        self.fields['client_phone_number'].widget.attrs.update(
+            {"placeholder": "format: 0505455444"}
         )
 
-    def save(self):
-        """ Save self object. Run this method from view """
-        new_obj = Order.objects.create(
-            product=self.cleaned_data["product"],
-            client_phone_number=self.cleaned_data["client_phone_number"],
-            status=self.cleaned_data["status"],
-            date_create_order=self.cleaned_data["date_create_order"],
-        )
-        return new_obj
+    def clean(self):
+        super().clean()
+        phone_data = self.cleaned_data.get('client_phone_number')
+
+        if len(phone_data) != 10 or not phone_data.isnumeric():
+            self._errors['client_phone_number'] = self.error_class([
+                'Invalid phone number'
+            ])
+
+        date_str = self.cleaned_data.get('date_create_order')
+        if not isinstance(date_str, datetime.date):
+            self._errors['date_create_order'] = self.error_class([
+                'Invalid date format'
+            ])
+
+        return self.cleaned_data
+
+    class Meta:
+        model = Order
+        fields = [
+            'product', 'client_phone_number',
+            'status', 'date_create_order'
+        ]
 
 
-class ProductForm(forms.Form):
+class ProductForm(FormControlMixin, ModelForm):
     """Form for create product"""
-
-    name = forms.CharField(max_length=255, )
-    start_price = forms.DecimalField(max_digits=5, decimal_places=2)
-    create_date = forms.DateField(
-        input_formats=["%d.%m.%Y"], help_text="Ex: 31.12.2000",
-    )
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        lists_var = ['name', 'start_price', 'create_date']
-        for attr in lists_var:
-            self.fields[attr].widget.attrs.update({"class": "form-control"})
-
         self.fields['name'].widget.attrs.update(
             {"placeholder": "Product name"}
         )
@@ -64,11 +65,19 @@ class ProductForm(forms.Form):
             {"placeholder": "Product price. Fromat: 10.99", }
         )
 
-    def save(self):
-        """ Save self object. Run this method from view """
-        new_obj = Product.objects.create(
-            name=self.cleaned_data["name"],
-            start_price=self.cleaned_data["start_price"],
-            create_date=self.cleaned_data["create_date"],
-        )
-        return new_obj
+    def clean(self):
+        super().clean()
+
+        if int(self.cleaned_data.get('start_price')) < 1:
+            self._errors['start_price'] = self.error_class([
+                'Enter a price > 1'
+            ])
+
+        return self.cleaned_data
+
+    class Meta:
+        model = Product
+        fields = [
+            'name', 'start_price',
+            'create_date'
+        ]

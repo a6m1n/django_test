@@ -1,8 +1,9 @@
+""" Class test case django manages views """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from django.urls import reverse
 
 from manages import models
+
 
 class TestViews(TestCase):
     """Test django views"""
@@ -20,27 +21,17 @@ class TestViews(TestCase):
         self.client.login(username="admin", password="123")
 
     def test_login(self):
+        """ Django test login user """
         user_login = self.client.login(username="admin", password="123")
         self.assertTrue(user_login)
         response = self.client.get("/orders/")
         self.assertEqual(response.status_code, 200)
 
-    def test_create_product_view_method_post_true_save(self):
-        lengs = models.Product.objects.count()
-        url = "/products/create"
-        data={
-            'name': "test_prodcut",
-            'start_price': 22,
-            'create_date': "01.01.2020",
-        }
-        self.client.post(url, data)
-        self.assertLess(lengs, models.Product.objects.count())
-        self.assertEqual(models.Product.objects.count(), lengs + 1)
-
     def test_create_product_view_method_post_false_save(self):
+        """ Test create product views. result - false """
         lengs = models.Product.objects.count()
         url = "/products/create"
-        data={
+        data = {
             'name': "test_prodcut",
             'start_price': 22,
             'create_date': "0101.2020",
@@ -49,45 +40,43 @@ class TestViews(TestCase):
         self.assertEqual(lengs, models.Product.objects.count())
 
     def test_filter_in_orders_status(self):
+        """ Testing my custom filter in order list page """
         response = self.client.get('/orders/')
         default_range = max(response.context['page_obj'].paginator.page_range)
 
         response = self.client.get('/orders/?status=New')
-        pages_status_new = max(response.context['page_obj'].paginator.page_range)
+        pages_status_new = max(
+            response.context['page_obj'].paginator.page_range)
 
         self.assertLess(pages_status_new, default_range)
 
     def test_filter_all_params(self):
+        """ Check all params filter """
         response = self.client.get('/orders/')
-        default_range = max(response.context['page_obj'].paginator.page_range)
+        default_range = max(
+            response.context['page_obj'].paginator.page_range)
 
         response = self.client.get(
             '/orders/?status=Payed&date_start=31-12-2004&date_end=31-12-2012')
-        pages_status_new = max(response.context['page_obj'].paginator.page_range)
+        pages_status_new = max(
+            response.context['page_obj'].paginator.page_range)
 
         self.assertLess(pages_status_new, default_range)
 
-    def test_create_order_view_method_post_true_save(self):
-        lengs = models.Order.objects.count()
-        url = "/orders/create"
-        data={
-            'product': 2,
-            'client_phone_number': '+248368742',
-            'status': "N",
-            'date_create_order':"02.02.2020",
-        }
-        self.client.post(url, data)
-        self.assertLess(lengs, models.Order.objects.count())
-        self.assertEqual(models.Order.objects.count(), lengs + 1)
+        response = self.client.get(
+            '/orders/?status=Payed&date_start=31-12-2004')
+
+
 
     def test_create_order_view_method_post_false_save(self):
+        """ Testing create order view. Result false """
         lengs = models.Order.objects.count()
         url = "/orders/create"
-        data={
+        data = {
             'product': 2,
             'client_phone_number': '+248368742',
             'status': "N",
-            'date_create_order':"0202.2020",
+            'date_create_order': "0202.2020",
         }
         self.client.post(url, data)
         self.assertEqual(lengs, models.Order.objects.count())
@@ -95,7 +84,7 @@ class TestViews(TestCase):
     def test_order_update_view_true_save(self):
         obj = models.Order.objects.first()
         url = f"/orders/{obj.pk}/change"
-        data={
+        data = {
             'product': 2,
             'client_phone_number': obj.client_phone_number,
             'status': 'D',
@@ -108,7 +97,24 @@ class TestViews(TestCase):
     def test_generage_check_view_method_post(self):
         obj = models.Order.objects.filter(status='P').first()
         url = f"/orders/{obj.pk}/check"
-        r = self.client.post(path=url, pk_obj=obj.pk)
+        r = self.client.post(path=url, pk=obj.pk)
         new_url = f'/orders/{obj.pk}/check/complete'
         self.assertEqual(new_url, r.url)
 
+    def test_success_order_update_status(self):
+        obj = models.Order.objects.filter(status='D').first()
+        url = f"/orders/{obj.pk}/check/complete"
+        self.client.get(path=url)
+        self.assertNotEqual(
+            models.Order.objects.filter(pk=obj.pk).first().status,
+            obj.status
+        )
+
+    def test_success_order_error(self):
+        obj = models.Order.objects.filter(status='P').first()
+        url = f"/orders/{obj.pk}/check/complete"
+        self.client.get(path=url)
+        self.assertEqual(
+            models.Order.objects.filter(pk=obj.pk).first().status,
+            obj.status
+        )

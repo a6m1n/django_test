@@ -21,7 +21,9 @@ class TestExtrasDjangoClass(TestCase):
 
             output_data = '/product/?status=New&page=1'
         """
-        response = self.client.get('/products/?status=New&date_start=01-01-2010')
+        response = self.client.get(
+            '/products/?status=New&date_start=01-01-2010'
+        )
 
         result_function_extras_change_url = manages_extras.query_transform(
             response.context, page="1"

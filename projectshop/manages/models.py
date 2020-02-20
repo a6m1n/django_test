@@ -7,7 +7,9 @@ from django.contrib.contenttypes.models import ContentType
 class Product(models.Model):
     """ Model Product """
     name = models.CharField(max_length=255)
-    start_price = models.DecimalField(max_digits=7, decimal_places=2)
+    start_price = models.DecimalField(
+        max_digits=7, decimal_places=2
+    )
     create_date = models.DateField()
 
     def get_all_discount(self):
@@ -70,6 +72,6 @@ class Sale(models.Model):
 
     def __str__(self):
         return (
-            f'Name discount: "{self.name}".'
+            f"Name discount: {self.name}."
             f"  Percent discount: {self.discount}%. (ID:{self.pk})"
         )

@@ -14,10 +14,10 @@ class TestViews(TestCase):
 
     def test_create_product_from(self):
         all_products = models.Product.objects.count()
-        data={
+        data = {
             'name': "test_prodcut",
             'start_price': 22,
-            'create_date': "01.01.2020",
+            'create_date': "2020-10-10",
         }
         form = forms.ProductForm(data=data)
         self.assertTrue(form.is_valid())
@@ -25,16 +25,12 @@ class TestViews(TestCase):
 
         self.assertNotEqual(all_products, models.Product.objects.count())
 
-    def test_create_order_from(self):
-        all_orders = models.Order.objects.count()
-        data={
-            'product': 2,
-            'client_phone_number': '+248368742',
-            'status': "N",
-            'date_create_order':"02.02.2020",
+    def test_ProductForm_clean_false_save(self):
+        data = {
+            'name': "test_prodcut",
+            'start_price': -22,
+            'create_date': "2020-10-10",
         }
-        form = forms.OrderForm(data=data)
-
-        self.assertTrue(form.is_valid())
-        form.save()
-        self.assertNotEqual(all_orders, models.Order.objects.count())
+        form = forms.ProductForm(data=data)
+        resp = form.errors.as_data().get('start_price')[0]
+        self.assertEqual(resp.message, 'Enter a price > 1')
