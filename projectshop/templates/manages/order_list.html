@@ -44,6 +44,9 @@
         {% include "manages/_pagination.html" %}
     {% endif %}
 
-    {% include "manages/_js_script_filter.html" %}
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/filter_url.js' %}">
+
   {% endif %}
 {% endblock %}

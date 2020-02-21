@@ -4,10 +4,18 @@
       Add settings filter
     </button>
   </p>
-
   <div class="collapse" id="collapseExample" style="padding: 1rem;">
     <div class="card card-body">
       <form action="" method="get" id="my-form">
+        {% if form.errors %}
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <div class="alert alert-danger" role="alert">
+                      {{error}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Statuses: </label>
@@ -24,22 +32,24 @@
           <div class="input-group-prepend">
             <span class="input-group-text">Date crete order (больше чем введенная дата):</span>
           </div>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="date_start">
+          {{form.date_start}}
           <div class="input-group-append">
-            <span class="input-group-text">Example 31-12-2000</span>
+            <span class="input-group-text">Example 2002-12-31</span>
           </div>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Date close order (больше чем введенная дата):</span>
+            <span class="input-group-text">Date create order stop (не больше чем введенная дата):</span>
           </div>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="date_end">
+          {{form.date_end}}
           <div class="input-group-append">
-            <span class="input-group-text">Example 31-12-2012</span>
+            <span class="input-group-text">Example 2012-12-30</span>
           </div>
         </div>
         <button type="button" class="btn btn-outline-primary" id="main_button">Send</button>
+
+
       </form>
 
     </div>

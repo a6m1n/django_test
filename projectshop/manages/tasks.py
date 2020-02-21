@@ -4,8 +4,8 @@ import datetime
 from django.contrib.contenttypes.models import ContentType
 
 from projectshop.celery import app
-from manages.models import Product, Sale
-from sales.models import AllTimeDiscount
+from manages.models import Product
+from sales.models import AllTimeDiscount, Sale
 
 
 @app.task(name="manages.tasks.product_all")

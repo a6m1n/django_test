@@ -3,7 +3,8 @@
 from django.test import TransactionTestCase
 from celery.contrib.testing.worker import start_worker
 from manages import tasks
-from manages.models import Sale
+from sales.models import Sale
+
 from projectshop.celery import app
 
 

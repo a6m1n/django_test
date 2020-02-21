@@ -10,9 +10,8 @@ from django.views.generic.detail import DetailView
 from django.shortcuts import redirect
 from django.db.models import Q
 
-
 from .models import Product, Order
-from .forms import ProductForm, OrderForm
+from .forms import ProductForm, OrderForm, FilterViewForm
 
 
 class IndexView(TemplateView):
@@ -66,39 +65,29 @@ class OrdersListView(ListView):
     paginate_by = 10
 
     def get_queryset(self, *args, **kwargs):
-        status = self.request.GET.get("status")
-        date_create_order = self.request.GET.get("date_start")
-        date_close_order = self.request.GET.get("date_end")
-        object_q = Q()
 
-        if status:
-            object_q &= Q(status=status[0])
+        self.form = FilterViewForm(self.request.GET)
 
-        if date_close_order:
-            try:
-                date_object_close = datetime.strptime(
-                    date_close_order, "%d-%m-%Y"
-                ).date()
-            except ValueError:
-                return super().get_queryset(*args, **kwargs)
-            object_q &= Q(date_close_order__gte=date_object_close)
+        if self.form.is_valid():
+            date_start = self.form.cleaned_data.get('date_start')
+            date_end = self.form.cleaned_data.get('date_end')
+            status = self.form.cleaned_data.get('status')
+            object_q = Q()
 
-        if date_create_order:
-            try:
-                date_object_create = datetime.strptime(
-                    date_create_order, "%d-%m-%Y"
-                ).date()
-            except ValueError:
-                return super().get_queryset(*args, **kwargs)
+            if status:
+                object_q &= Q(status=status[0])
+            if date_start:
+                object_q &= Q(date_create_order__gte=date_start)
+            if date_end:
+                object_q &= Q(date_create_order__lte=date_end)
 
-            object_q &= Q(date_create_order__gte=date_object_create)
-            # q &= Q(date_create_order__year__gte=2000)
-
-        return super().get_queryset(*args, **kwargs).filter(object_q)
+            return super().get_queryset(*args, **kwargs).filter(object_q)
+        return super().get_queryset(*args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context["status"] = Order.STATUSES
+        context["form"] = self.form
         return context
 
 
@@ -159,12 +148,12 @@ class SuccessOrderView(DetailView):
     template_name = "manages/success_order.html"
 
     def get(self, request, *args, **kwargs):
-        resp = super().get(request, *args, **kwargs)
+        response = super().get(request, *args, **kwargs)
         if self.object.status == "D":
             self.object.status = "P"
             self.object.date_close_order = datetime.now().date()
             self.object.save()
-            return resp
+            return response
         return HttpResponse("Error")
 
 

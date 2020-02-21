@@ -30,20 +30,17 @@ class CreateFixtureProduct:
         """Creation all fixtures data"""
 
         for primary_key in range(1, 100):
-            new_dict = {}
-            new_dict["model"] = f"{self.app}.{self.model}"
-            new_dict["pk"] = primary_key
-            new_dict["fields"] = {}
-
-            new_dict["fields"]["name"] = random.choice(self.names)
-            new_dict["fields"]["start_price"] = random.randint(1, 3000)
-            new_dict["fields"]["create_date"] = (
-                random_datetime().date().isoformat()
-            )
-
+            new_dict = {
+                "model": f"{self.app}.{self.model}", "pk": primary_key,
+                "fields": {
+                    "name": random.choice(self.names),
+                    "start_price": random.randint(1, 3000),
+                    "create_date": random_datetime().date().isoformat(),
+                }
+            }
             self.data.append(new_dict)
 
-    def write_to_file(self, name_file):
+    def write_to_file(self, name_file: str) -> bool:
         """Write to file json data"""
         with open(self.path + name_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
@@ -78,16 +75,14 @@ class CreateFixtureOrder(CreateFixtureProduct):
     def create_data(self):
 
         for primary_key in range(1, 50):
-            new_dict = {}
-            new_dict["model"] = f"{self.app}.{self.model}"
-            new_dict["pk"] = primary_key
-            new_dict["fields"] = {}
-
-            new_dict["fields"]["product"] = self.generate_product()
-            new_dict["fields"]["client_phone_number"] = generate_phone()
-            new_dict["fields"]["status"] = self.generate_statuse()
-            new_dict["fields"]["date_create_order"] = (
-                random_datetime().date().isoformat()
-            )
+            new_dict = {
+                "model": f"{self.app}.{self.model}", "pk": primary_key,
+                "fields": {
+                    "product": self.generate_product(),
+                    "client_phone_number": generate_phone(),
+                    "status": self.generate_statuse(),
+                    "date_create_order": random_datetime().date().isoformat()
+                }
+            }
 
             self.data.append(new_dict)

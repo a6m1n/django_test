@@ -57,16 +57,35 @@ class TestViews(TestCase):
             response.context['page_obj'].paginator.page_range)
 
         response = self.client.get(
-            '/orders/?status=Payed&date_start=31-12-2004&date_end=31-12-2012')
+            '/orders/?status=Payed&date_start=2002-12-01&date_end=2012-12-31')
         pages_status_new = max(
             response.context['page_obj'].paginator.page_range)
 
         self.assertLess(pages_status_new, default_range)
 
+    def test_filter_no_validate_form_date_create_start(self):
+        """Check filter no validate date create"""
+        response = self.client.get('/orders/')
+        default_range = max(
+            response.context['page_obj'].paginator.page_range)
+
         response = self.client.get(
-            '/orders/?status=Payed&date_start=31-12-2004')
+            '/orders/?date_start=31.12.2015')
+        pages_status_new = max(
+            response.context['page_obj'].paginator.page_range)
+        self.assertEqual(pages_status_new, default_range)
 
+    def test_filter_no_validate_form_date_create_stop(self):
+        """Check filter no validate date stop"""
+        response = self.client.get('/orders/')
+        default_range = max(
+            response.context['page_obj'].paginator.page_range)
 
+        response = self.client.get(
+            '/orders/?date_end=01.01/2000')
+        pages_status_new = max(
+            response.context['page_obj'].paginator.page_range)
+        self.assertEqual(pages_status_new, default_range)
 
     def test_create_order_view_method_post_false_save(self):
         """ Testing create order view. Result false """
@@ -82,6 +101,7 @@ class TestViews(TestCase):
         self.assertEqual(lengs, models.Order.objects.count())
 
     def test_order_update_view_true_save(self):
+        """Test update view in orders. Save status = TRUE!"""
         obj = models.Order.objects.first()
         url = f"/orders/{obj.pk}/change"
         data = {
@@ -95,13 +115,16 @@ class TestViews(TestCase):
         self.assertEqual(new_url, r.url)
 
     def test_generage_check_view_method_post(self):
+        """Test generate check view. Or test redirect after POST requests"""
         obj = models.Order.objects.filter(status='P').first()
         url = f"/orders/{obj.pk}/check"
+
         r = self.client.post(path=url, pk=obj.pk)
         new_url = f'/orders/{obj.pk}/check/complete'
         self.assertEqual(new_url, r.url)
 
     def test_success_order_update_status(self):
+        """testing success view and update object status after buy product"""
         obj = models.Order.objects.filter(status='D').first()
         url = f"/orders/{obj.pk}/check/complete"
         self.client.get(path=url)
@@ -111,6 +134,7 @@ class TestViews(TestCase):
         )
 
     def test_success_order_error(self):
+        """ test update status iif it will be banned RESULT = FALSE"""
         obj = models.Order.objects.filter(status='P').first()
         url = f"/orders/{obj.pk}/check/complete"
         self.client.get(path=url)

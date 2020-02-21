@@ -1,7 +1,9 @@
 """Django forms file"""
 import datetime
 
+from django import forms
 from django.forms import ModelForm
+
 from .models import Product, Order
 
 
@@ -15,6 +17,9 @@ class FormControlMixin:
 
 class OrderForm(FormControlMixin, ModelForm):
     """Class order form. Validation phone and date this!"""
+    product = forms.ModelChoiceField(
+        queryset=Product.objects.filter(order=None), )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -31,14 +36,12 @@ class OrderForm(FormControlMixin, ModelForm):
 
         if len(phone_data) != 10 or not phone_data.isnumeric():
             self._errors['client_phone_number'] = self.error_class([
-                'Invalid phone number'
-            ])
+                'Invalid phone number'])
 
         date_str = self.cleaned_data.get('date_create_order')
         if not isinstance(date_str, datetime.date):
             self._errors['date_create_order'] = self.error_class([
-                'Invalid date format'
-            ])
+                'Invalid date format'])
 
         return self.cleaned_data
 
@@ -53,17 +56,17 @@ class OrderForm(FormControlMixin, ModelForm):
 class ProductForm(FormControlMixin, ModelForm):
     """Form for create product"""
     def __init__(self, *args, **kwargs):
+        """added html attrs to class (added only to form!)"""
         super().__init__(*args, **kwargs)
+
         self.fields['name'].widget.attrs.update(
-            {"placeholder": "Product name"}
-        )
+            {"placeholder": "Product name"})
+
         self.fields['create_date'].widget.attrs.update(
-            {"placeholder": "format: dd.mm.YYYY."}
-        )
+            {"placeholder": "format: dd.mm.YYYY."})
 
         self.fields['start_price'].widget.attrs.update(
-            {"placeholder": "Product price. Fromat: 10.99", }
-        )
+            {"placeholder": "Product price. Fromat: 10.99", })
 
     def clean(self):
         super().clean()
@@ -81,3 +84,17 @@ class ProductForm(FormControlMixin, ModelForm):
             'name', 'start_price',
             'create_date'
         ]
+
+
+class FilterViewForm(FormControlMixin, forms.Form):
+    """Class filter form in list order (filter orders)"""
+    date_start = forms.DateField(initial=datetime.date.today, required=False)
+    date_end = forms.DateField(initial=datetime.date.today, required=False)
+
+    def clean(self):
+        super().clean()
+        status = self.data.get("status")
+
+        if status:
+            self.cleaned_data["status"] = status
+        return self.cleaned_data

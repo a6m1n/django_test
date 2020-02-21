@@ -5,7 +5,7 @@ from datetime import datetime
 from datetime import timedelta
 
 
-def random_date(start, end):
+def random_date(start: datetime, end: datetime) -> datetime:
     """
     This function will return a random datetime between two datetime
     objects.
@@ -16,7 +16,7 @@ def random_date(start, end):
     return start + timedelta(seconds=random_second)
 
 
-def random_datetime():
+def random_datetime() -> datetime:
     """ Returned random date start=date_start end=date_end """
 
     date_start = datetime.strptime(

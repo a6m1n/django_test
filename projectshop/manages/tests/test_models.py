@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 from manages import models
-from sales.models import AllTimeDiscount
+from sales.models import AllTimeDiscount, Sale
 
 
 class TestViews(TestCase):
@@ -23,12 +23,13 @@ class TestViews(TestCase):
         self.client.login(username="admin", password="123")
 
     def create_object_sale(self):
+        """Create objects sales"""
         product = models.Product.objects.all().first()
         all_disct = AllTimeDiscount.objects.create(
             name='test',
             discount='50',
         )
-        models.Sale.objects.create(
+        Sale.objects.create(
             name="Classic all-time sale",
             product=product,
             content_type=ContentType.objects.get_for_model(
@@ -66,10 +67,10 @@ class TestViews(TestCase):
 
     def test_sale_discount(self):
         self.create_object_sale()
-        obj = models.Sale.objects.all().first()
+        obj = Sale.objects.all().first()
         self.assertTrue(obj.discount)
 
     def test_sale_str(self):
         self.create_object_sale()
-        obj = models.Sale.objects.all().first()
+        obj = Sale.objects.all().first()
         self.assertTrue(obj.__str__())
