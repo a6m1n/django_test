@@ -1,6 +1,6 @@
 
-#How to run tutorial
-####cpython 3.6.9
+# How to run tutorial
+#### python 3.6.9
 ~~~~
 - git clone {rep}
 - install venv (User does it)

@@ -1,6 +1,9 @@
 """"Django models from app manages"""
 from django.db import models
 
+from decimal import *
+from typing import Union
+
 
 class Product(models.Model):
     """ Model Product """
@@ -10,23 +13,25 @@ class Product(models.Model):
     )
     create_date = models.DateField()
 
-    def get_all_discount(self):
+    def get_all_discount(self) -> Union[Decimal, int]:
         """ Returned total discount """
         result = 0
         sales = self.sales.all()
-        for sale in sales:
-            result += sale.content_object.discount
-        return result if result <= 100 else 99
+        if sales:
+            for sale in sales:
+                result += sale.content_object.discount
+            return result if result <= 100 else 99
+        return self.start_price
 
     @property
-    def price(self):
+    def price(self) -> Decimal:
         """" Property method who returned current price product """
         if self.sales.all():
             percent_sale = self.start_price * self.get_all_discount() / 100
             return round(self.start_price-percent_sale, 2)
         return self.start_price
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name} {self.price} ({self.pk})'
 
 
@@ -43,5 +48,5 @@ class Order(models.Model):
     date_create_order = models.DateField()
     date_close_order = models.DateField(blank=True, null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.product.name} {self.get_status_display()} ({self.pk})"

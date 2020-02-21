@@ -4,6 +4,8 @@ import datetime
 from django import forms
 from django.forms import ModelForm
 
+from typing import Any, Dict
+
 from .models import Product, Order
 
 
@@ -30,7 +32,7 @@ class OrderForm(FormControlMixin, ModelForm):
             {"placeholder": "format: 0505455444"}
         )
 
-    def clean(self):
+    def clean(self) -> Any:
         super().clean()
         phone_data = self.cleaned_data.get('client_phone_number')
 
@@ -68,7 +70,7 @@ class ProductForm(FormControlMixin, ModelForm):
         self.fields['start_price'].widget.attrs.update(
             {"placeholder": "Product price. Fromat: 10.99", })
 
-    def clean(self):
+    def clean(self) -> Any:
         super().clean()
 
         if int(self.cleaned_data.get('start_price')) < 1:
@@ -91,7 +93,7 @@ class FilterViewForm(FormControlMixin, forms.Form):
     date_start = forms.DateField(initial=datetime.date.today, required=False)
     date_end = forms.DateField(initial=datetime.date.today, required=False)
 
-    def clean(self):
+    def clean(self) -> Dict[Any, Any]:
         super().clean()
         status = self.data.get("status")
 

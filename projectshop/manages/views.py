@@ -10,6 +10,10 @@ from django.views.generic.detail import DetailView
 from django.shortcuts import redirect
 from django.db.models import Q
 
+from typing import Any, Dict, Optional
+from django.db.models.query import QuerySet
+
+
 from .models import Product, Order
 from .forms import ProductForm, OrderForm, FilterViewForm
 
@@ -64,7 +68,7 @@ class OrdersListView(ListView):
     template_name = "manages/order_list.html"
     paginate_by = 10
 
-    def get_queryset(self, *args, **kwargs):
+    def get_queryset(self, *args, **kwargs) -> QuerySet[Any]:
 
         self.form = FilterViewForm(self.request.GET)
 
@@ -84,7 +88,7 @@ class OrdersListView(ListView):
             return super().get_queryset(*args, **kwargs).filter(object_q)
         return super().get_queryset(*args, **kwargs)
 
-    def get_context_data(self, *args, **kwargs):
+    def get_context_data(self, *args, **kwargs) -> Dict[Any, Any]:
         context = super().get_context_data(*args, **kwargs)
         context["status"] = Order.STATUSES
         context["form"] = self.form
@@ -119,7 +123,7 @@ class OrderUpdate(UpdateView):
     template_name_suffix = "_update_form"
     fields = ["product", "client_phone_number", "status", "date_create_order"]
 
-    def get_success_url(self):
+    def get_success_url(self) -> Any:
         order_id = self.kwargs["pk"]
         return reverse_lazy("order_detail", kwargs={"pk": order_id})
 
@@ -131,7 +135,7 @@ class GenerateCheckView(DetailView):
     context_object_name = "order"
     template_name = "manages/order_generate.html"
 
-    def post(self, request, pk):
+    def post(self, request, pk) -> Any:
         """Classic post request"""
         return redirect(reverse_lazy(
             "check_complete", kwargs={"pk": pk}))
@@ -147,7 +151,7 @@ class SuccessOrderView(DetailView):
     context_object_name = "order"
     template_name = "manages/success_order.html"
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs) -> HttpResponse:
         response = super().get(request, *args, **kwargs)
         if self.object.status == "D":
             self.object.status = "P"

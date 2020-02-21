@@ -8,10 +8,6 @@ class TestViews(TestCase):
     """Test django views"""
     fixtures = ['data_products.json', 'data_orders.json']
 
-    @classmethod
-    def setUpTestData(cls):
-        print("One.")
-
     def test_create_product_from(self):
         all_products = models.Product.objects.count()
         data = {

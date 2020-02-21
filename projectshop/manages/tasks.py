@@ -9,7 +9,7 @@ from sales.models import AllTimeDiscount, Sale
 
 
 @app.task(name="manages.tasks.product_all")
-def product_all(status=None):
+def product_all(status: str = None):
     """Adds sale with percent 20 to all product, that were created before
      30 days. If status = "clear" celery task will remove all sale in products
 

@@ -7,6 +7,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 from manages.models import Product
 
+from typing import Any, Optional
 
 class Sale(models.Model):
     """"Model Sale"""
@@ -25,7 +26,7 @@ class Sale(models.Model):
     content_object = GenericForeignKey("content_type", "object_id")
 
     @property
-    def discount(self):
+    def discount(self) -> Optional[Any]:
         """"discount one object"""
         return self.content_object.discount
 
