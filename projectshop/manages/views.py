@@ -5,7 +5,7 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import FormView, UpdateView, CreateView
 from django.views.generic.detail import DetailView
 from django.shortcuts import redirect
 from django.db.models import Q
@@ -50,7 +50,7 @@ class ProductDetailView(DetailView):
     context_object_name = "product"
 
 
-class CreateProductView(FormView):
+class CreateProductView(CreateView):
     """
     Create product in HTML template.
     url: host/products/create
@@ -68,7 +68,7 @@ class OrdersListView(ListView):
     template_name = "manages/order_list.html"
     paginate_by = 10
 
-    def get_queryset(self, *args, **kwargs) -> QuerySet[Any]:
+    def get_queryset(self, *args, **kwargs):
 
         self.form = FilterViewForm(self.request.GET)
 
@@ -95,7 +95,7 @@ class OrdersListView(ListView):
         return context
 
 
-class CreateOrderView(FormView):
+class CreateOrderView(CreateView):
     """
     Create product in HTML template.
     url: host/orders/create

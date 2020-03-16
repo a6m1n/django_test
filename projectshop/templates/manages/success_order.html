@@ -4,7 +4,13 @@
 {% block content %}
 <div class="jumbotron">
   <h1 class="display-4">Hello, user!</h1>
-  <p class="lead">You have buy this item: <br> Name: {{order.product.name}}. <br> Price: {{order.product.price}}$.</p>
+  <p class="lead">You have buy this item:
+    <br> Name: {{order.product.name}}.
+    <br> Price: {{order.product.price}}$.
+    <br> Date create order {{order.date_create_order}} .
+    <br> Date close order {{order.date_close_order}} .
+  </p>
+
   <hr class="my-4">
   <p>Buy again?</p>
   <a class="btn btn-primary btn-lg" href="{% url 'products'%}" role="button">Check products</a>

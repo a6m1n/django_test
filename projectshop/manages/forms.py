@@ -65,14 +65,14 @@ class ProductForm(FormControlMixin, ModelForm):
             {"placeholder": "Product name"})
 
         self.fields['create_date'].widget.attrs.update(
-            {"placeholder": "format: dd.mm.YYYY."})
+            {"placeholder": "format: YYYY.mm.dd."})
 
         self.fields['start_price'].widget.attrs.update(
             {"placeholder": "Product price. Fromat: 10.99", })
 
     def clean(self) -> Any:
         super().clean()
-
+        print(self.cleaned_data.get('start_price'))
         if int(self.cleaned_data.get('start_price')) < 1:
             self._errors['start_price'] = self.error_class([
                 'Enter a price > 1'
